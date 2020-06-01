@@ -1,0 +1,838 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    background-color: white;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Скрывает ненужные на странице элементы */
+.visually-hidden:not(:focus):not(:active),
+input[type="checkbox"].visually-hidden,
+input[type="radio"].visually-hidden {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+/* Главная навигация */
+.mai-nav {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.main-nav-list {
+    color: white;
+    font-size: 16px;
+    line-height: 20px;
+    margin: 0;
+    padding: 20px 10px;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 0 0 10px 10px;
+}
+
+
+.main-nav a, .main-footer a {
+    text-decoration: none;
+    color: white;
+}
+
+/* Тарифы и услуги */
+.tariffs, .service {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    font-size: 16px;
+}
+.service {
+  margin-bottom: 100px;
+}
+
+.content h2 {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.card {
+    position: relative;
+    color: white;
+    background-color: black;
+    width: 220px;
+    height: 400px;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+.card .heading {
+    font-size: 25px;
+    line-height: 30px;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.card ul {
+  padding-left: 25px;
+}
+
+.card ul li {
+    line-height: 26px;
+}
+
+.descr {
+  text-align: center;
+  font-size: 16px;
+  font-weight: normal;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.btn-connect {
+    border: none;
+    background-color: aqua;
+    color: black;
+    position: absolute;
+    bottom: 0;
+    border-radius: 5px;
+    margin-left: 75px;
+    margin-bottom: 20px;
+    padding: 5px;
+}
+
+.btn-connect:hover, .btn-enter:hover {
+ background-color: coral;
+ -webkit-transition: all.6s ease;
+ -moz-transition: all.6s ease;
+ -o-transition: all.6s ease;
+ -ms-transition: all.6s ease;
+ transition: all.6s ease;
+}
+
+.only-serv, .only-tar {
+  padding-bottom: 220px;
+  min-height: auto;
+}
+
+/* Подвал */
+.main-footer {
+    width: 100%;
+    font-size: 16px;
+    line-height: 20px;
+    color: white;
+    background-color: black;
+    border-radius: 10px 10px 0 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+
+.social a {
+padding-right: 10px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+}
+
+.rights {
+  margin-top: 7px;
+}
+
+/* Модальное окно входа */
+/* @keyframes bounce {
+  0% {
+    transform: translateY(-2000px);
+  }
+
+  70% {
+    transform: translateY(30px);
+  }
+
+  90% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+} */
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-10px);
+  }
+
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(10px);
+  }
+}
+
+.modal {
+    position: fixed;
+  
+    display: none;
+  
+    color: #000000;
+  
+    background-color: white;
+    background-position: 0 0;
+    background-repeat: repeat;
+    box-shadow: 0 30px 50px rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+  }
+  
+  .modal-show {
+    display: block;
+  }
+  
+  .modal-error {
+    animation: shake 0.6s;
+  }
+  
+  .modal-login {
+    top: 120px;
+    left: 50%;
+  
+    width: 300px;
+    margin-left: -230px;
+    padding: 50px 80px;
+  }
+  
+  .modal-close {
+    position: absolute;
+    top: 0;
+    right: -34px;
+  
+    width: 22px;
+    height: 22px;
+  
+    font-size: 0;
+  
+    background-color: transparent;
+    border: 0;
+  
+    cursor: pointer;
+  }
+  
+  .modal-close::before,
+  .modal-close::after {
+    content: "";
+  
+    position: absolute;
+    top: 10px;
+    left: 2px;
+  
+    width: 19px;
+    height: 3px;
+  
+    background-color: #d0d0d0;
+  }
+
+  .button-enter {
+    display: inline-block;
+    margin-right: 16px;
+    padding: 10px 30px;
+  
+    font: inherit;
+    text-align: center;
+    color: #ffffff;
+    vertical-align: middle;
+    text-transform: uppercase;
+  
+    background-color: #000000;
+    border: none;
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  .modal-close::before {
+    transform: rotate(45deg);
+  }
+  
+  .modal-close::after {
+    transform: rotate(-45deg);
+  }
+  
+  .modal-login h2 {
+    margin: 0;
+    margin-bottom: 20px;
+  
+    font-size: 30px;
+    line-height: 42px;
+  }
+  
+  .modal-description {
+    margin: 0;
+    margin-bottom: 10px;
+  }
+  
+  .login-form p {
+    margin: 0;
+    margin-bottom: 10px;
+  }
+  
+  .login-form input[type="text"],
+  .login-form input[type="password"] {
+    box-sizing: border-box;
+    width: 300px;
+    padding: 10px 15px;
+    padding-right: 40px;
+  
+    font: inherit;
+    color: #000000;
+    text-transform: uppercase;
+  
+    background-color: #f9f6f3;
+    border: 2px solid #000000;
+    border-radius: 10px;
+  }
+  
+  .login-form input:focus {
+    border-color: #663d15;
+  }
+  
+  .login-form .login-help {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 15px 0;
+  }
+  
+  .login-checkbox {
+    position: relative;
+  
+    padding-left: 30px;
+  
+    cursor: pointer;
+  }
+  
+  .login-checkbox:hover,
+  .login-checkbox:focus {
+    color: #663d15;
+  }
+  
+  .login-checkbox input[type="checkbox"] + .checkbox-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+  
+    width: 17px;
+    height: 17px;
+  
+    border: 2px solid #000000;
+  }
+  
+  .login-checkbox input[type="checkbox"]:focus + .checkbox-indicator {
+    border-color: #663d15;
+    outline: thin dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+  }
+  
+  .login-checkbox input[type="checkbox"]:checked + .checkbox-indicator::before,
+  .login-checkbox input[type="checkbox"]:checked + .checkbox-indicator::after {
+    content: "";
+  
+    position: absolute;
+    top: 8px;
+    left: 1px;
+  
+    width: 15px;
+    height: 2px;
+  
+    background-color: #000000;
+  }
+  
+  .login-checkbox input[type="checkbox"]:checked + .checkbox-indicator::before {
+    transform: rotate(45deg);
+  }
+  
+  .login-checkbox input[type="checkbox"]:checked + .checkbox-indicator::after {
+    transform: rotate(-45deg);
+  }
+  
+  .restore {
+    color: #000000;
+    text-decoration: underline;
+  }
+  
+  .restore:hover,
+  .restore:focus {
+    text-decoration: none;
+  }
+  
+  .login-form .button {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  /* Личный кабинет */
+  .user-info {
+    margin-top: 200px;
+    margin-bottom: 200px;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  
+  .user-info p{
+    margin-left: 10px;
+  }
+  
+  .ab-info {
+    display: inline-block;
+    width: 30%;
+  }
+  
+  .ab-info h3{
+    margin-left: 10px;
+  }
+
+  .ab-info ul {
+    padding-left: 10px;
+  }
+
+  .ab-info :nth-child(3){
+    margin-top: 0px;
+    margin-bottom: 20px;
+  }
+ 
+  .ab-info :nth-child(4){
+    margin-top: -10px;
+  }
+  .green {
+    color: rgb(109, 199, 20);
+  }
+
+  .card-cab {
+    border: none;
+    color: white;
+    background-color: black;
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    font-size: 20px;
+    margin: 10px;
+  }
+
+  .card-cab:hover {
+   box-shadow: 0px 0px 5px 5px rgb(109, 199, 20);
+  }
+
+  .buttons a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    float: right;
+    width: 70%;
+    margin-top: 5%;
+  }
+
+  .admin {
+    margin-bottom: 150px;
+  }
+
+  /* Страница пополнения */
+  .plus-score {
+    margin-top: 180px;
+    margin-left:500px;
+    width: 400px;
+    height: 500px;
+  }
+
+  .plus-score h3{
+   text-align: center;
+  }
+
+  .plus-score input{
+    font: inherit;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-right: 20px;
+    border-radius: 10px;
+    border: none;
+  }
+
+  .plus-score input:hover {
+    box-shadow: 0px 0px 5px 5px rgb(109, 199, 20);
+  }
+
+  .plus-score form {
+    box-shadow: 0px 0px 5px 5px rgb(153, 173, 132);
+    background-color: black;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .field {
+    text-align: right;
+  }
+
+  label {
+    float: left;
+    margin-left: 20px;
+  }
+
+  label:first-child {
+    margin-top: 5px;
+  }
+
+  .btn-pay {
+    text-align: center;
+    padding: 5px;
+    background-color: white;
+    border-radius: 10px;
+    border: none;
+    color: black;
+    font: inherit;
+    font-size: 13px;
+    margin-top: 10px;
+  }
+
+  .btn-pay:hover {
+    background-color: rgb(109, 199, 20);
+    color: black;
+  }
+
+  /* Расходы */
+  .detail-block {
+    text-align: center;
+    margin: 30px 20% 0 28%;
+    width: 50%;
+  }
+  .req-block {
+    text-align: center;
+    margin: 30px 20% 0 35%;
+    width: 50%;
+  }
+  
+  .detail h2{
+    margin-top: 40px;
+  }
+
+  .tab-block {
+    margin: 30px 50% 0 5%;
+    width: 50%;
+  }
+
+  .tab-req-block {
+    margin: 30px 30% 0 0;
+    width: 80%;
+  }
+
+  .tab-sotr-block {
+    margin: 30px 0 0 31%;
+    width: 70%;
+  }
+
+  table {
+    border-spacing: 0 10px;
+    font-weight: bold;
+  }
+
+  th {
+    padding: 10px 20px;
+    border-right: 2px solid; 
+  }
+
+  
+  th:last-child {
+    border-right: none;
+  }
+  
+  td {
+    vertical-align: middle;
+    padding: 10px;
+    font-size: 14px;
+    text-align: center;
+    border-top: 2px solid #56433D;
+    border-bottom: 2px solid #56433D;
+    border-right: 2px solid #56433D;
+  }
+
+  td:first-child {
+    border-left: 2px solid #56433D;
+  }
+
+  /* Добавление нового тарифа */
+  .new, .new-tar {
+    margin-top: 120px;
+    margin-left:500px;
+    width: 400px;
+    height: 560px;
+  }
+
+  .new h3, .new-tar h3{
+   text-align: center;
+  }
+
+  .new input, .new-tar input {
+    font: inherit;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-right: 20px;
+    border-radius: 10px;
+    border: none;
+  }
+
+  .new textarea, .new-tar textarea {
+    font: inherit;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-right: 20px;
+    border-radius: 10px;
+    border: none;
+    width: 165px;
+    resize: vertical;
+    max-height: 100px;
+    min-height: 50px;
+  }
+
+  .new input:hover, .new-tar input:hover {
+    box-shadow: 0px 0px 5px 5px rgb(109, 199, 20);
+  }
+
+  .new form, .new-tar form {
+    box-shadow: 0px 0px 5px 5px rgb(153, 173, 132);
+    background-color: black;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .field {
+    text-align: right;
+  }
+
+  label {
+    float: left;
+    margin-left: 20px;
+  }
+
+  label:first-child {
+    margin-top: 5px;
+  }
+
+  .btn-ins {
+    text-align: center;
+    padding: 5px;
+    background-color: white;
+    border-radius: 10px;
+    border: none;
+    color: black;
+    font: inherit;
+    font-size: 13px;
+    margin-top: 10px;
+  }
+
+  .btn-ins:hover {
+    background-color: rgb(109, 199, 20);
+    color: black;
+  }
+
+  /* Другая высота блока для сотрудника */
+  .sotr {
+    margin-bottom: 350px;
+  }
+
+  .new-ab {
+    margin-top: 130px;
+    width: 450px;
+    height: 545px;
+  }
+
+  select {
+    font: inherit;
+    text-align: center;
+    margin-right: 20px;
+    border-radius: 10px;
+    margin-left: 50px;
+    border: none;
+    width: 170px;
+  }
+
+  .all-users-list h2{
+    margin-top: 50px;
+  }
+
+  .all-users-list, .req-content{
+    margin-bottom: 100px;
+  }
+
+  .tab {
+    margin-left: 300px;
+  }
+
+  .admin {
+    margin-top: 0;
+  }
+
+  .personal {
+    margin-top: -100px;
+  }
+
+  .us-search {
+    margin-top: 5px;
+    font: inherit;
+    width: 70%;
+    border: none;
+    text-align: center;
+    border-radius: 10px;
+    border: 2px solid black;
+  }
+
+  .us-search:focus {
+    outline: none;
+    box-shadow: 0px 0px 5px 5px rgb(153, 173, 132);
+  }
+  .tab label {
+    margin-left: 0px;
+  }
+
+  .tab form {
+    margin-bottom: 10px;
+  }
+
+  .tab button {
+    font: inherit;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 5px 10px 5px 10px;
+  }
+  
+  .tab button:hover {
+    box-shadow: 0px 0px 5px 5px rgb(153, 173, 132);
+  }
+
+  .delAb h3 {
+    text-align: center;
+  }
+
+  .drop-ab {
+    width: 500px;
+    height: 120px;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    margin-left: 450px;
+    text-align: center;
+  }
+
+  .drop-ab select {
+    margin-top: 20px;
+  }
+
+  .drop-ab label {
+    margin-top: 18px;
+    margin-left: 20px;
+  }
+
+  .lbnumb {
+    margin-left: 50px;
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+
+  .sNumber {
+    display: block;
+    width: 150px;
+    height: 30px;
+    font-size: 15px;
+    margin-left: 35px;
+  }
+
+  .search-num-det {
+    background-color: black;
+    color: white;
+    width: 400px;
+    height: 100px;
+    border-radius: 10px;
+    margin-left: 525px;
+  }
+
+  .search-num-det label {
+    margin-top: 12px;
+  }
+
+  .search-num-det input {
+    font-style: inherit;
+    border: none;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-right: 50px;
+    padding: 5px;
+    width: 150px;
+    height: 18px;
+    text-align: center;
+  }
+
+  .search-num-det button {
+    font-style: inherit;
+    border: none;
+    margin-left: 170px;
+  }
+
+  .new-sotr {
+    margin-top: 50px;
+    height: 250px;
+  }
+
+  .new-ab {
+    margin-bottom: 50px;
+  }
+
+  .del-sotr {
+    height: 250px;
+    margin-bottom: 50px;
+  }
+
+  .allSotr {
+    text-align: center;
+    margin-bottom: 100px;
+  }
+
+  .detail {
+    margin-bottom: 150px;
+  }
